@@ -1,0 +1,82 @@
+@host = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjdkNTdlYmRjLTYzOTgtNDNjNC1hZTQ0LWI2ZTJkODcyNmFmMyIsImV4cCI6MTcyOTIyNDg5NSwiaXNzIjoiTWFub2VsU3RvcmUiLCJhdWQiOiJNYW5vZWxTdG9yZSJ9.2_P5kbZiOMoemQR1IX-nC0P0I56AUhyvgt7f0l4g0GA
+
+POST {{host}}/api/auth/
+Content-Type: application/json
+
+{
+  "email": "admin@admin.com",
+  "password": "12345"
+}
+
+###
+
+POST {{host}}/api/packing/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+  
+{
+  "pedidos": [
+    {
+      "pedido_id": 1,
+      "produtos": [
+        {"produto_id": "PS5", "dimensoes": {"altura": 40, "largura": 10, "comprimento": 25}},
+        {"produto_id": "Volante", "dimensoes": {"altura": 40, "largura": 30, "comprimento": 30}}
+      ]
+    }
+  ]
+}
+
+###
+
+POST {{host}}/api/packing/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "pedidos": [
+    {
+      "pedido_id": 3,
+      "produtos": [
+        {"produto_id": "Headset", "dimensoes": {"altura": 25, "largura": 15, "comprimento": 20}}
+      ]
+    }
+  ]
+}
+
+###
+
+POST {{host}}/api/packing/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+  
+{
+  "pedidos": [
+    {
+      "pedido_id": 5,
+      "produtos": [
+        {"produto_id": "Cadeira Gamer", "dimensoes": {"altura": 120, "largura": 60, "comprimento": 70}}
+      ]
+    }
+  ]
+}
+
+###
+
+POST {{host}}/api/packing/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "pedidos": [
+    {
+      "pedido_id": 6,
+      "produtos": [
+        {"produto_id": "Webcam", "dimensoes": {"altura": 7, "largura": 10, "comprimento": 5}},
+        {"produto_id": "Microfone", "dimensoes": {"altura": 25, "largura": 10, "comprimento": 10}},
+        {"produto_id": "Monitor", "dimensoes": {"altura": 50, "largura": 60, "comprimento": 20}},
+        {"produto_id": "Notebook", "dimensoes": {"altura": 2, "largura": 35, "comprimento": 25}}
+      ]
+    }
+  ]
+}
